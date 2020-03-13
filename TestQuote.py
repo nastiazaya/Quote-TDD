@@ -26,8 +26,8 @@ class TestQuote(unittest.TestCase):
     @patch('QuoteGarden.requests.get')
     def test_all_quote(self,mock_get):
         all_quote_response = {
-            "count":2
-            ,"results":
+            "count":2 ,
+            "results":
                 [{"_id":"5d91b45d9980192a317c87f3","quoteText":"Doing nothing is better than being busy doing nothing.","quoteAuthor":"Lao Tzu"},
                  {"_id":"5d91b45d9980192a317c87fa","quoteText":"Work out your own salvation. Do not depend on others.","quoteAuthor":"Buddha"}]}
         mock_get.return_value = Mock(ok=True)

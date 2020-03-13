@@ -37,6 +37,7 @@ class QuoteGarden:
             result_list.append(result['results'][i]['quoteText'])
         return result_list
 
+    @staticmethod
     def get_list_author(result):
         result_list = []
         number = result['count']
