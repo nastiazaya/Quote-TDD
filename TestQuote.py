@@ -28,8 +28,19 @@ class TestQuote(unittest.TestCase):
         all_quote_response = {
             "count":2 ,
             "results":
-                [{"_id":"5d91b45d9980192a317c87f3","quoteText":"Doing nothing is better than being busy doing nothing.","quoteAuthor":"Lao Tzu"},
-                 {"_id":"5d91b45d9980192a317c87fa","quoteText":"Work out your own salvation. Do not depend on others.","quoteAuthor":"Buddha"}]}
+                [
+                    {
+                        "_id":"5d91b45d9980192a317c87f3",
+                        "quoteText":"Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor":"Lao Tzu"
+                    },
+                    {
+                        "_id":"5d91b45d9980192a317c87fa",
+                        "quoteText":"Work out your own salvation. Do not depend on others.",
+                        "quoteAuthor":"Buddha"
+                    }
+                ]
+        }
         mock_get.return_value = Mock(ok=True)
         mock_get.return_value.json.return_value = all_quote_response
 
@@ -42,26 +53,46 @@ class TestQuote(unittest.TestCase):
     @patch('QuoteGarden.requests.get')
     def test_author_quote(self, mock_get):
         author_quote_response = {
-            "count":2,
+            "count": 2,
             "results":
-                [{"_id":"5d91b45d9980192a317c87f3","quoteText":"Doing nothing is better than being busy doing nothing.","quoteAuthor":"Lao Tzu"},
-                 {"_id":"5d91b45d9980192a317c87ed","quoteText":"To lead people walk behind them.","quoteAuthor":"Lao Tzu"}]}
+                [
+                    {
+                        "_id": "5d91b45d9980192a317c87f3",
+                        "quoteText": "Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor": "Lao Tzu"
+                    },
+                    {
+                        "_id": "5d91b45d9980192a317c87ed",
+                        "quoteText": "To lead people walk behind them.",
+                        "quoteAuthor": "Lao Tzu"
+                    }
+                ]
+        }
         name = "Lao Tzu"
         mock_get.return_value = Mock(ok=True)
         mock_get.return_value.json.return_value = author_quote_response
-        expected = ["Doing nothing is better than being busy doing nothing.","To lead people walk behind them."]
+        expected = ["Doing nothing is better than being busy doing nothing.", "To lead people walk behind them."]
         author_quote_result = QuoteGarden.get_by_author(name)
         self.assertEqual(author_quote_result, expected)
 
     @patch('QuoteGarden.requests.get')
-    def test_author_quote_number(self,mock_get):
+    def test_author_quote_number(self, mock_get):
         author_quote_response = {
             "count": 2,
             "results":
-                [{"_id": "5d91b45d9980192a317c87f3",
-                  "quoteText": "Doing nothing is better than being busy doing nothing.", "quoteAuthor": "Lao Tzu"},
-                 {"_id": "5d91b45d9980192a317c87ed", "quoteText": "To lead people walk behind them.",
-                  "quoteAuthor": "Lao Tzu"}]}
+                [
+                    {
+                        "_id": "5d91b45d9980192a317c87f3",
+                        "quoteText": "Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor": "Lao Tzu"
+                    },
+                    {
+                        "_id": "5d91b45d9980192a317c87ed",
+                        "quoteText": "To lead people walk behind them.",
+                        "quoteAuthor": "Lao Tzu"
+                    }
+                ]
+        }
         name = "Lao Tzu"
         mock_get.return_value = Mock(ok=True)
         mock_get.return_value.json.return_value = author_quote_response
@@ -88,12 +119,19 @@ class TestQuote(unittest.TestCase):
     def test_all_author(self,mock_get):
         all_quote_response = {
             "count": 2
-            , "results": [{"_id": "5d91b45d9980192a317c87f3",
-                           "quoteText": "Doing nothing is better than being busy doing nothing.",
-                           "quoteAuthor": "Lao Tzu"},
-                          {"_id": "5d91b45d9980192a317c87fa",
-                           "quoteText": "Work out your own salvation. Do not depend on others.",
-                           "quoteAuthor": "Buddha"}]}
+            , "results":
+                [
+                    {
+                        "_id": "5d91b45d9980192a317c87f3",
+                        "quoteText": "Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor": "Lao Tzu"},
+                        {
+                            "_id": "5d91b45d9980192a317c87fa",
+                            "quoteText": "Work out your own salvation. Do not depend on others.",
+                            "quoteAuthor": "Buddha"
+                        }
+                ]
+        }
         mock_get.return_value = Mock(ok=True)
         mock_get.return_value.json.return_value = all_quote_response
 
@@ -116,10 +154,19 @@ class TestQuote(unittest.TestCase):
         all_quote_response = {
             "count": 2,
             "results":
-                [{"_id": "5d91b45d9980192a317c87f3",
-                  "quoteText": "Doing nothing is better than being busy doing nothing.", "quoteAuthor": "Lao Tzu"},
-                 {"_id": "5d91b45d9980192a317c87ed", "quoteText": "To lead people walk behind them.",
-                  "quoteAuthor": "Lao Tzu"}]}
+                [
+                    {
+                        "_id": "5d91b45d9980192a317c87f3",
+                        "quoteText": "Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor": "Lao Tzu"
+                    },
+                    {
+                        "_id": "5d91b45d9980192a317c87ed",
+                        "quoteText": "To lead people walk behind them.",
+                        "quoteAuthor": "Lao Tzu"
+                    }
+                ]
+        }
         mock_get.return_value = Mock(ok=True)
         mock_get.return_value.json.return_value = all_quote_response
         expected = 2
