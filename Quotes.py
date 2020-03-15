@@ -25,4 +25,6 @@ class Quotes:
 
     @staticmethod
     def get_random_quote(result):
-        return result["quoteText"]
+        return [result["quoteText"]]
+
+

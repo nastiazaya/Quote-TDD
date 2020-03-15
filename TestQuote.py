@@ -21,7 +21,7 @@ class TestQuote(unittest.TestCase):
         mock_get.return_value.json.return_value = random_quote_response
 
         result = QuoteApi.random_quote()
-        expected = "A man who doesn't trust himself can never really trust anyone else."
+        expected = ["A man who doesn't trust himself can never really trust anyone else."]
         random_quote_result = Quotes.get_random_quote(result)
         print(random_quote_result)
         self.assertEqual(random_quote_result, expected)
@@ -186,6 +186,48 @@ class TestQuote(unittest.TestCase):
         author_quote_result = QuoteGardenCount.get_number_quotes(result)
         self.assertEqual(author_quote_result, expected)
 
+    @patch('QuoteGarden.requests.get')
+    def test_randon_is_one(self,mock_get):
+         random_quote_response = {
+             "_id": "5d91b45d9980192a317c9a26",
+             "quoteText": "A man who doesn't trust himself can never really trust anyone else.",
+             "quoteAuthor": "Cardinal Retz"
+         }
+
+         mock_get.return_value = Mock(ok=True)
+         mock_get.return_value.json.return_value = random_quote_response
+
+         result = QuoteApi.random_quote()
+         expected = 1
+         random_quote_result = Quotes.get_random_quote(result)
+         self.assertEqual(len(random_quote_result), expected)
+
+    @patch('QuoteGarden.requests.get')
+    def test_all_count_quote(self,mock_get):
+        all_quote_response = {
+            "count": 2,
+            "results":
+                [
+                    {
+                        "_id": "5d91b45d9980192a317c87f3",
+                        "quoteText": "Doing nothing is better than being busy doing nothing.",
+                        "quoteAuthor": "Lao Tzu"
+                    },
+                    {
+                        "_id": "5d91b45d9980192a317c87fa",
+                        "quoteText": "Work out your own salvation. Do not depend on others.",
+                        "quoteAuthor": "Buddha"
+                    }
+                ]
+        }
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = all_quote_response
+
+        result = QuoteApi.all_quotes()
+        all_quote_result = Quotes.get_all(result)
+        count = QuoteGardenCount.get_number_quotes(result)
+        # print(all_quote_result)
+        self.assertEqual(len(all_quote_result), count)
 
 if __name__ == '__main__':
     unittest.main()

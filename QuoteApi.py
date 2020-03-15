@@ -1,5 +1,6 @@
 import requests
 
+
 class QuoteApi:
 
     @staticmethod
@@ -25,3 +26,6 @@ class QuoteApi:
         api_response = api_result.json()
 
         return api_response
+
+
+

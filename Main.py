@@ -3,11 +3,25 @@ from QuoteApi import QuoteApi
 from QuoteGardenCount import QuoteGardenCount
 from Quotes import Quotes
 
-if __name__ == '__main__':
+import os
+from time import sleep
 
-    number = input("choose:" + "1.random" + "2.all" + "3. by author")
+#def clear():
+#    sleep(3)
+#    os.system('clear')
 
-    if number == 1 :
+
+def close():
+#    clear()
+    print("program has been closed")
+    sleep(1)
+    exit(0)
+
+
+def give_quotes(number):
+
+
+    if number == 1:
         result = QuoteApi.random_quote()
         choose = input("choose:"+ "1.presented quote" + "2.presented author")
         if choose == 1 :
@@ -15,7 +29,7 @@ if __name__ == '__main__':
         else:
             print(QuoteGardenAuthor.get_random_author(result))
 
-    elif number == 2 :
+    elif number == 2:
         result = QuoteApi.all_quotes()
         choose = input("choose:" + "1.presented quotes" + "2.presented count " + "3. presented all author")
         number_quote = QuoteGardenCount.get_number_quotes(result)
@@ -39,3 +53,37 @@ if __name__ == '__main__':
                 print(list[i])
         else:
             print(number_quote)
+
+
+def get_quote(type):
+    if type == 1:
+        give_quotes(1)
+    if type == 2:
+        give_quotes(3)
+    if type == 3:
+        give_quotes(2)
+
+def main():
+    while True:
+        print("""
+        1. get Random 
+        2. get Specific author
+        3. get all
+        4.exit
+        """)
+
+        menu = input()
+    #    clear()  # clear the screen
+        switcher = {
+            1: lambda x: get_quote(1),
+            2: lambda x: get_quote(2),
+            3: lambda x: get_quote(3), #only nerdy and explicit catagories
+            4: lambda x: close(),
+        }
+        switcher.get(int(menu))(0)
+
+
+
+
+if __name__ == "__main__":
+    main()
