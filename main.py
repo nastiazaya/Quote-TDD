@@ -1,5 +1,5 @@
-from QuoteApi import QuoteApi
-from Quotes import Quotes
+
+from src.quotes import Quotes
 
 import os
 from time import sleep
