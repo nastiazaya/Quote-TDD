@@ -32,7 +32,7 @@ def get_quote(type):
 def main():
     while True:
         print("""
-        1. get Random 
+        1. get Random
         2. get Specific author
         3. get all
         4.exit
