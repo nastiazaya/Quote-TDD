@@ -14,7 +14,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv main
+            python3 -m venv Main
             pip install -r requirements.txt
             pip install pycodestyle pytest pytest-cov
             pip install pylint pytest pytest-cov
