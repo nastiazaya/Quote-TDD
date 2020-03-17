@@ -1,13 +1,12 @@
 import unittest
 from unittest.mock import Mock, patch
-
-from QuoteApi import QuoteApi
-from Quotes import Quotes
+from src.QuoteApi import QuoteApi
+from src.Quotes import Quotes
 
 
 class TestAllQuote(unittest.TestCase):
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_all_quote(self, mock_get):
         all_quote_response = {
             "count": 2,
@@ -34,7 +33,7 @@ class TestAllQuote(unittest.TestCase):
         all_quote_result_count,  all_quote_result, all_quote_result_author = Quotes.get_all_quote()
         self.assertEqual(all_quote_result, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_all_author(self, mock_get):
         all_quote_response = {
             "count": 2,
@@ -57,7 +56,7 @@ class TestAllQuote(unittest.TestCase):
         all_quote_result_count, all_quote_result, all_quote_result_author = Quotes.get_all_quote()
         self.assertEqual(all_quote_result_author, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_quote_number(self, mock_get):
         all_quote_response = {
             "count": 2,
@@ -81,7 +80,7 @@ class TestAllQuote(unittest.TestCase):
         all_quote_result_count, all_quote_result, all_quote_result_author = Quotes.get_all_quote()
         self.assertEqual(all_quote_result_count, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_all_count_quote(self, mock_get):
         all_quote_response = {
             "count": 2,
@@ -105,7 +104,7 @@ class TestAllQuote(unittest.TestCase):
         all_quote_result_count, all_quote_result, all_quote_result_author = Quotes.get_all_quote()
         self.assertEqual(len(all_quote_result), all_quote_result_count)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_all_number_author(self, mock_get):
         all_quote_response = {
             "count": 3,
@@ -135,7 +134,7 @@ class TestAllQuote(unittest.TestCase):
         all_quote_result_count, all_quote_result, all_quote_result_author = Quotes.get_all_quote()
         self.assertEqual(len(all_quote_result_author), expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.QuoteApi.requests.get')
     def test_author_number_all(self, mock_get):
         author_quote_response = {
             "count": 2,
