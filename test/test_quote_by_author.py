@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from QuoteApi import QuoteApi
-from Quotes import Quotes
+from src.quote_api import QuoteApi
+from src.quotes import Quotes
 
 
 class TestQuoteByAuthor(unittest.TestCase):
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.quote_api.requests.get')
     def test_author_quote(self, mock_get):
         author_quote_response = {
             "count": 2,
@@ -32,7 +32,7 @@ class TestQuoteByAuthor(unittest.TestCase):
         author_quote_result_count, author_quote_result = Quotes.get_quote_by_author(name)
         self.assertEqual(author_quote_result, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.quote_api.requests.get')
     def test_author_quote_number(self, mock_get):
         author_quote_response = {
             "count": 2,
@@ -57,7 +57,7 @@ class TestQuoteByAuthor(unittest.TestCase):
         author_quote_result_count, author_quote_result = Quotes.get_quote_by_author(name)
         self.assertEqual(author_quote_result_count, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.quote_api.requests.get')
     def test_author_not_found(self, mock_get):
         all_quote_response = {
             "count": 0,
@@ -70,7 +70,7 @@ class TestQuoteByAuthor(unittest.TestCase):
         author_quote_result_count, author_quote_result = Quotes.get_quote_by_author(name)
         self.assertEqual(author_quote_result_count, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.quote_api.requests.get')
     def test_author_not_found_zero_quote(self, mock_get):
         all_quote_response = {
             "count": 0,
@@ -83,7 +83,7 @@ class TestQuoteByAuthor(unittest.TestCase):
         author_quote_result_count, author_quote_result = Quotes.get_quote_by_author(name)
         self.assertEqual(author_quote_result, expected)
 
-    @patch('QuoteApi.requests.get')
+    @patch('src.quote_api.requests.get')
     def test_all_count_quote(self, mock_get):
         author_quote_response = {
             "count": 2,

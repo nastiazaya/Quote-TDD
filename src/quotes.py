@@ -1,4 +1,4 @@
-from src.QuoteApi import QuoteApi
+from src.quote_api import QuoteApi
 
 
 class Quotes:
