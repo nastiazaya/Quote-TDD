@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/python:3.6
 
-    working_directory: ~/CicdQuote
+    working_directory: ~/Quote-TDD
 
     steps:
       # Step 1: obtain repo from GitHub
